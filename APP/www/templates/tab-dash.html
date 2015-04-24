@@ -1,28 +1,22 @@
 <ion-view view-title="Dashboard">
   <ion-content class="padding">
-    <div class="list card">
-      <div class="item item-divider">Recent Updates</div>
-      <div class="item item-body">
-        <div>
-          There is a fire in <b>sector 3</b>
-        </div>
-      </div>
-    </div>
-    <div class="list card">
-      <div class="item item-divider">Health</div>
-      <div class="item item-body">
-        <div>
-          You ate an apple today!
-        </div>
-      </div>
-    </div>
-    <div class="list card">
-      <div class="item item-divider">Upcoming</div>
-      <div class="item item-body">
-        <div>
-          You have <b>29</b> meetings on your calendar tomorrow.
-        </div>
-      </div>
-    </div>
+      <ion-list>
+          <div ng-repeat="tema in temas">
+              <ion-item style="color: {{tema.color}}" ng-click="select(tema.codigo)" class="item-avatar item-icon-left item-icon-right"  type="item-text-wrap" >
+                  <i class="icon {{tema.icon}}"></i>
+                  {{tema.nombre}}
+                  <i class="icon" ng-class="{'ion-android-arrow-dropdown-circle' : selected.codigo == tema.codigo && selected.show, 'ion-android-arrow-dropup-circle' : selected.codigo != tema.codigo || !selected.show}">
+                      {{tema.propuestas.length}} propuestas
+                  </i>
+              </ion-item>
+              <ion-item ng-repeat="propuesta in selected.propuestas" ng-if="selected.codigo == tema.codigo && selected.show"  class="item-avatar item-icon-right">
+                  <img ng-src="data/IMG/candidatos/{{candidatos[propuesta.candidato].imagen}}">
+                  <h2>{{propuesta.titulo}}</h2>
+                  <p style="color: {{selected.color}}">{{candidatos[propuesta.candidato].nombre}}</p>
+                  <i class="icon ion-chevron-right icon-accessory"></i>
+              </ion-item>
+          </div>
+
+      </ion-list>
   </ion-content>
 </ion-view>

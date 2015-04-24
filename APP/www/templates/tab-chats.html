@@ -1,10 +1,10 @@
-<ion-view view-title="Chats">
+<ion-view view-title="Candidatos">
   <ion-content>
     <ion-list>
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="candidato in candidatos" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
-        <img ng-src="{{candidato.imagen}}">
+        <img ng-src="data/IMG/candidatos/{{candidato.imagen}}">
         <h2>{{candidato.nombre}}</h2>
-        <p>{{candidato.partido}}</p>
+        <p style="color: {{partidos[candidato.partido].color}}">{{partidos[candidato.partido].nombre}}</p>
         <p>{{candidato.lista}}</p>
         <i class="icon ion-chevron-right icon-accessory"></i>
       </ion-item>
