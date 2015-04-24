@@ -14,7 +14,21 @@ angular.module('starter.controllers', [])
 })
 
 .controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
+        $scope.partidos = partidos;
+        $scope.candidatos = candidatos;
+        $scope.propuestas = propuestas;
+        angular.forEach($scope.candidatos, function(candidato){
+            if(!$scope.partidos[candidato.partido].candidatos)
+                $scope.partidos[candidato.partido].candidatos = [];
+            $scope.partidos[candidato.partido].candidatos.push(candidato);
+
+        })
+        angular.forEach($scope.propuestas, function(propuesta){
+            if(!$scope.partidos[propuesta.partido].propuestas)
+                $scope.partidos[propuesta.partido].propuestas = []
+            $scope.partidos[propuesta.partido].propuestas.push(propuesta);
+            if(!$scope.candidatos[propuesta.candidato].propuestas)
+                $scope.candidatos[propuesta.candidato].propuestas = []
+            $scope.candidatos[propuesta.candidato].propuestas.push(propuesta);
+        })
 });

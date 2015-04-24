@@ -1,9 +1,25 @@
 <ion-view view-title="Account">
   <ion-content>
-    <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
-    </ion-list>
+      <div class="list card" ng-repeat="partido in partidos">
+          <div class="item item-image">
+              <img ng-src="data/IMG/partidos/{{partido.imagen}}">
+          </div>
+          <div class="row">
+              <div class="col col-50">
+                  <a style="text-align: center; color: {{partido.color}}"  class="item assertive" href="#">
+                      <span ng-if="partido.propuestas.length > 0">{{partido.propuestas.length}}</span>
+                      <span ng-if="!partido.propuestas">0</span> propuestas
+                  </a>
+              </div>
+              <div class="col col-50">
+                  <a style="text-align: center; color: {{partido.color}}" class="item assertive" href="#">
+                      <span ng-if="partido.candidatos.length > 0">{{partido.candidatos.length}}</span>
+                      <span ng-if="!partido.candidatos">0</span> candidatos
+                  </a>
+              </div>
+          </div>
+
+
+      </div>
   </ion-content>
 </ion-view>
