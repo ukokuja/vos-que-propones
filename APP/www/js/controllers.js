@@ -24,6 +24,9 @@ angular.module('starter.controllers', [])
                 }
             }
         }
+        $scope.count = function(val){
+            return val;
+        }
         console.log(candidatos);
 
         angular.forEach($scope.candidatos, function(candidato){

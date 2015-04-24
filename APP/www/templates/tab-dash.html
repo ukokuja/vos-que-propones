@@ -1,18 +1,19 @@
-<ion-view view-title="Dashboard">
+<ion-view view-title="Propuestas">
   <ion-content class="padding">
       <ion-list>
           <div ng-repeat="tema in temas">
               <ion-item style="color: {{tema.color}}" ng-click="select(tema.codigo)" class="item-avatar item-icon-left item-icon-right"  type="item-text-wrap" >
                   <i class="icon {{tema.icon}}"></i>
-                  {{tema.nombre}}
+                  <p>{{tema.nombre}}</p>
+                  <p ng-cloak>{{count(tema.propuestas.length)}} propuestas</p>
+
                   <i class="icon" ng-class="{'ion-android-arrow-dropdown-circle' : selected.codigo == tema.codigo && selected.show, 'ion-android-arrow-dropup-circle' : selected.codigo != tema.codigo || !selected.show}">
-                      {{tema.propuestas.length}} propuestas
                   </i>
               </ion-item>
               <ion-item ng-repeat="propuesta in selected.propuestas" ng-if="selected.codigo == tema.codigo && selected.show"  class="item-avatar item-icon-right">
-                  <img ng-src="data/IMG/candidatos/{{candidatos[propuesta.candidato].imagen}}">
-                  <h2>{{propuesta.titulo}}</h2>
-                  <p style="color: {{selected.color}}">{{candidatos[propuesta.candidato].nombre}}</p>
+                  <img ng-src="data/IMG/candidatos/{{partidos[propuesta.partido].candidatos[propuesta.candidato].imagen}}">
+                  <h2 style="color: {{selected.color}}">{{propuesta.titulo}}</h2>
+                  <p style="color: {{partidos[propuesta.partido].color}}">{{partidos[propuesta.partido].candidatos[propuesta.candidato].nombre}}</p>
                   <i class="icon ion-chevron-right icon-accessory"></i>
               </ion-item>
           </div>
