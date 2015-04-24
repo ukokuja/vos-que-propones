@@ -4,7 +4,17 @@
   The FriendsCtrl pulls data from the Friends service (service.js)
   The Friends service returns an array of friend data
 -->
+
 <ion-view view-title="{{candidato.nombre}}">
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.3&appId=675371589198569";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
   <ion-content class="padding">
       <div class="list card">
 
@@ -26,8 +36,8 @@
                           <i class="icon" ng-class="{'ion-android-arrow-dropdown-circle' : selected.codigo == tema.codigo && selected.show, 'ion-android-arrow-dropup-circle' : selected.codigo != tema.codigo || !selected.show}">
                           </i>
                       </ion-item>
-                      <ion-item ng-repeat="propuesta in selected.propuestas" ng-if="selected.codigo == tema.codigo && selected.show"  class="item-avatar item-icon-right">
-                          <h2 style="color: {{partidos[propuesta.partido].color}}">{{propuesta.titulo}}</h2>
+                      <ion-item ng-repeat="propuesta in selected.propuestas" ng-if="selected.codigo == tema.codigo && selected.show"  class="item-avatar item-icon-right" href="#/tab/propuesta/{{propuesta.codigo}}">
+                          <h2>{{propuesta.titulo}}</h2>
                           <i class="icon ion-chevron-right icon-accessory"></i>
                       </ion-item>
                   </div>

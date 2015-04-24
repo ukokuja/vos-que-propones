@@ -4,6 +4,9 @@ angular.module('starter.controllers', [])
         $scope.partidos = partidos;
         $scope.candidatos = candidatos;
         $scope.propuestas = propuestas;
+        angular.forEach($scope.propuestas, function(value, key){
+            value.codigo = key;
+        });
         $scope.temas = temitas;
         $scope.selected = {
             show: false
@@ -49,10 +52,24 @@ angular.module('starter.controllers', [])
         })
 
     })
+    .controller('ChatPropuestaCtrl', function($scope, $stateParams) {
+        $scope.partidos = partidos;
+        $scope.candidatos = candidatos;
+        $scope.propuestas = propuestas;
+        angular.forEach($scope.propuestas, function(value, key){
+            value.codigo = key;
+        });
+        $scope.temas = temitas;
+        $scope.propuesta = $scope.propuestas[$stateParams.propuesta]
+
+    })
 .controller('ChatsCtrl', function($scope) {
         $scope.partidos = partidos;
         $scope.candidatos = candidatos;
         $scope.propuestas = propuestas;
+        angular.forEach($scope.propuestas, function(value, key){
+            value.codigo = key;
+        });
         console.log(candidatos);
         angular.forEach($scope.candidatos, function(candidato){
             if(!$scope.partidos[candidato.partido].candidatos)
@@ -74,6 +91,9 @@ angular.module('starter.controllers', [])
         $scope.partidos = partidos;
         $scope.candidatos = candidatos;
         $scope.propuestas = propuestas;
+        angular.forEach($scope.propuestas, function(value, key){
+            value.codigo = key;
+        });
         $scope.temas = temitas;
         $scope.selected = {
             show: false
@@ -124,6 +144,9 @@ angular.module('starter.controllers', [])
         $scope.partidos = partidos;
         $scope.candidatos = candidatos;
         $scope.propuestas = propuestas;
+        angular.forEach($scope.propuestas, function(value, key){
+            value.codigo = key;
+        });
         angular.forEach($scope.candidatos, function(candidato){
             if(!$scope.partidos[candidato.partido].candidatos)
                 $scope.partidos[candidato.partido].candidatos = [];

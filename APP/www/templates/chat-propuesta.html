@@ -1,0 +1,45 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+
+<ion-view view-title="{{propuesta.titulo}}">
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.3&appId=675371589198569";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+  <ion-content class="padding">
+      <div class="list card">
+
+          <div class="item item-avatar">
+              <img src="data/IMG/candidatos/{{candidatos[propuesta.candidato].imagen}}">
+              <h2>{{propuesta.titulo}}</h2>
+              <p>{{candidatos[propuesta.candidato].nombre}}</p>
+              <p>{{partidos[candidatos[propuesta.candidato].partido].nombre}}</p>
+          </div>
+
+          <div class="item item-body">
+              <img class="full-image" src="data/IMG/partidos/{{partidos[candidatos[propuesta.candidato].partido].imagen}}">
+              <p>
+                  {{propuesta.texto}}
+              </p>
+              <!--<p>
+                  <a href="#" class="subdued">1 Like</a>
+                  <a href="#" class="subdued">5 Comments</a>
+              </p>-->
+          </div>
+
+          <div class="item tabs tabs-secondary tabs-icon-left">
+              <div class="fb-comments" data-href="http://developers.facebook.com/docs/plugins/comments/" data-numposts="3" data-colorscheme="light"></div>
+          </div>
+
+      </div>
+  </ion-content>
+</ion-view>

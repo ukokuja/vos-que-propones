@@ -69,7 +69,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
-
+      .state('tab.chat-propuesta', {
+          url: '/propuesta/:propuesta',
+          views: {
+              'tab-chats': {
+                  templateUrl: 'templates/chat-propuesta.html',
+                  controller: 'ChatPropuestaCtrl'
+              }
+          }
+      })
   .state('tab.account', {
     url: '/account',
     views: {
