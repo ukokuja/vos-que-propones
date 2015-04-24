@@ -2,7 +2,7 @@
   <ion-content>
     <ion-list>
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="candidato in candidatos" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
-        <img ng-src="data/IMG/candidatos/{{candidato.imagen}}">
+        <img style="border: 2px solid {{partidos[candidato.partido].color}}" ng-src="data/IMG/candidatos/{{candidato.imagen}}">
         <h2>{{candidato.nombre}}</h2>
         <p style="color: {{partidos[candidato.partido].color}}">{{partidos[candidato.partido].nombre}}</p>
         <p>{{candidato.lista}}</p>

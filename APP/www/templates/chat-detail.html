@@ -4,11 +4,41 @@
   The FriendsCtrl pulls data from the Friends service (service.js)
   The Friends service returns an array of friend data
 -->
-<ion-view view-title="{{chat.name}}">
+<ion-view view-title="{{candidato.nombre}}">
   <ion-content class="padding">
-    <img ng-src="{{chat.face}}" style="width: 64px; height: 64px">
-    <p>
-      {{chat.lastText}}
-    </p>
+      <div class="list card">
+
+          <div class="item item-avatar">
+              <img src="data/IMG/candidatos/{{candidato.imagen}}">
+              <h2>{{candidato.nombre}}</h2>
+              <p>{{partidos[candidato.partido].nombre}}</p>
+              <p>{{candidato.lista}}</p>
+          </div>
+
+          <div class="item item-body">
+              <ion-list>
+                  <div ng-repeat="tema in temas">
+                      <ion-item style="color: {{tema.color}}" ng-click="select(tema.codigo)" class="item-avatar item-icon-left item-icon-right"  type="item-text-wrap" >
+                          <i class="icon {{tema.icon}}"></i>
+                          <p>{{tema.nombre}}</p>
+                          <p ng-cloak ng-if="tema.propuestas.length > 0">{{tema.propuestas.length}} propuestas</p>
+                          <p ng-cloak ng-if="!tema.propuestas || tema.propuestas.length == 0"> no tiene propuestas</p>
+                          <i class="icon" ng-class="{'ion-android-arrow-dropdown-circle' : selected.codigo == tema.codigo && selected.show, 'ion-android-arrow-dropup-circle' : selected.codigo != tema.codigo || !selected.show}">
+                          </i>
+                      </ion-item>
+                      <ion-item ng-repeat="propuesta in selected.propuestas" ng-if="selected.codigo == tema.codigo && selected.show"  class="item-avatar item-icon-right">
+                          <h2 style="color: {{partidos[propuesta.partido].color}}">{{propuesta.titulo}}</h2>
+                          <i class="icon ion-chevron-right icon-accessory"></i>
+                      </ion-item>
+                  </div>
+
+              </ion-list>
+          </div>
+
+          <div class="item tabs tabs-secondary tabs-icon-left">
+              <div class="fb-comments" data-href="http://developers.facebook.com/docs/plugins/comments/" data-numposts="3" data-colorscheme="light"></div>
+          </div>
+
+      </div>
   </ion-content>
 </ion-view>
